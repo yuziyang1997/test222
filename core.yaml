@@ -1,0 +1,1261 @@
+swagger: '2.0'
+info:
+  version: ''
+  title: API for MAP
+  description: ''
+basePath: /api
+paths:
+  '/architecture/gateway/{gwid}':
+    parameters:
+      - name: gwid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getGatewayDetailForMicroservice
+      summary: 获取gateway的信息（microservice之间调用）
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  /architecture/type:
+    post:
+      operationId: selectArchType
+      summary: 在当前project中选择一个arch type
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/SelectArchTypeReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getArchType
+      summary: 获取Architecture的type信息
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/configserver':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    post:
+      operationId: createConfigServer
+      summary: 在project里新建一个configserver
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/ConfigReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/discovery/{dcid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: dcid
+        in: path
+        required: true
+        type: string
+    delete:
+      operationId: deleteDiscovery
+      summary: 删除discovery
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getDiscoveryDetail
+      summary: 获取discovery的信息
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    put:
+      operationId: updateDiscovery
+      summary: 更新discovery
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UpdateDiscoveryReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/configserver/{cfid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: cfid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getConfigserverDetail
+      summary: 获取configserver的信息
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    delete:
+      operationId: deleteconfigserver
+      summary: 删除configserver
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    put:
+      operationId: updateConfigServer
+      summary: 更新configserver
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UpdateConfigReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/discovery':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    post:
+      operationId: createDiscovery
+      summary: 在project里新建一个discovery
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/DiscoveryReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/gateway/{gwid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: gwid
+        in: path
+        required: true
+        type: string
+    put:
+      operationId: updateGateway
+      summary: 更新gateway
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UpdateGatewayReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    delete:
+      operationId: deleteGateway
+      summary: 删除gateway
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getGatewayDetail
+      summary: 获取gateway信息
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/gateway':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    post:
+      operationId: createGateway
+      summary: 在project里新建一个gateway
+      tags:
+        - Architecture
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/GatewayReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/configserver/{cfid}':
+    parameters:
+      - name: cfid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getConfigserverDetailForMicroservice
+      summary: 获取configserver的信息（microservice之间调用）
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/discovery/{dcid}':
+    parameters:
+      - name: dcid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getDiscoveryDetailForMicroservice
+      summary: 获取discovery的信息（microservice之间调用）
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/architecture/{pjid}/list/{typeid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: typeid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getArchList
+      summary: 获取对应架构的ArchList
+      tags:
+        - Architecture
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/{pjid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    post:
+      operationId: createMicroservice
+      summary: 在project里新建一个microservice
+      tags:
+        - Microservices
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/MicroserviceReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getMicservice
+      summary: 列出所有或搜索部分microservice
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: search
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/{pjid}/{msid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: msid
+        in: path
+        required: true
+        type: string
+    put:
+      operationId: updateMicroservice
+      summary: 更新某个microservice
+      tags:
+        - Microservices
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UpdateMicroserviceReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getMicroserviceDetail
+      summary: 获取某个microservice的信息
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    delete:
+      operationId: deleteMicroservice
+      summary: 删除某个microservice
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  /microservices/openapi/callback:
+    post:
+      operationId: callbackOpenapi
+      summary: API上传回调更新status状态
+      tags:
+        - Microservices
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/OpenApiCallBackReqVO'
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/sync/{pjid}/{msid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: msid
+        in: path
+        required: true
+        type: string
+    put:
+      operationId: syncMicroservice
+      summary: 关联某个microservice至当前arch
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  /microservices/callback:
+    post:
+      operationId: callbackMicroservice
+      summary: codegen回调更新microservice status状态
+      tags:
+        - Microservices
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/CallBackReqVO'
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/{msid}/openapi':
+    parameters:
+      - name: msid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getMicroserviceOpenApiList
+      summary: 获取某个microservice中的openapi列表
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  /microservices/type:
+    get:
+      operationId: getMicroserviceType
+      summary: 获取microservice的type信息
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  /microservices/springboot/tools:
+    get:
+      operationId: getSpringBootTools
+      summary: 获取所有或搜索部分SpringBoot的tools信息
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: search
+          in: query
+          required: false
+          type: string
+        - name: buildType
+          in: query
+          required: true
+          type: string
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/{pjid}/{msid}/openapi/{oaid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: msid
+        in: path
+        required: true
+        type: string
+      - name: oaid
+        in: path
+        required: true
+        type: string
+    delete:
+      operationId: deleteSwagger
+      summary: 删除上传的Swagger文件和其API
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/microservice/{msid}':
+    parameters:
+      - name: msid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getMicroserviceDetailForMicroservice
+      summary: 获取某个microservice的信息（microservice之间调用）
+      tags:
+        - Microservices
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/microservices/reupdate/{pjid}/{msid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: msid
+        in: path
+        required: true
+        type: string
+    put:
+      operationId: reupdateMicroservice
+      summary: 重新更新某个microservice
+      tags:
+        - Microservices
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/projects/{pjid}/collaborators':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getCollaborators
+      summary: 获取某个project中的collaborators的列表
+      tags:
+        - Projects
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    post:
+      operationId: addCollaborators
+      summary: 添加一个或多个collaborators至某个project
+      tags:
+        - Projects
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/CollaboratorsReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  /projects:
+    post:
+      operationId: createProject
+      summary: 创建project
+      tags:
+        - Projects
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/CreateProjectReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getProjects
+      summary: 列出所有或搜索部分project
+      tags:
+        - Projects
+      produces:
+        - application/json
+      parameters:
+        - name: search
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/projects/{pjid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    put:
+      operationId: updateProject
+      summary: 更新某个project的信息
+      tags:
+        - Projects
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/UpdateProjectReqVO'
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    get:
+      operationId: getProjectDetail
+      summary: 获取某个project的信息
+      tags:
+        - Projects
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+    delete:
+      operationId: deleteProject
+      summary: 删除某个project
+      tags:
+        - Projects
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/projects/{pjid}/userList/':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getUserList
+      summary: 获取可添加到project中的userList
+      tags:
+        - Projects
+      produces:
+        - application/json
+      parameters:
+        - name: search
+          in: query
+          required: false
+          type: string
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+  '/projects/{pjid}/collaborators/{cbid}':
+    parameters:
+      - name: pjid
+        in: path
+        required: true
+        type: string
+      - name: cbid
+        in: path
+        required: true
+        type: string
+    delete:
+      operationId: deleteCollabrator
+      summary: 删除某个project中的某个collaborator
+      tags:
+        - Projects
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+definitions:
+  EepOrderCallbackVO:
+    title: ERPOrderCallBackVO
+    type: object
+  CollaboratorsReqVO:
+    title: CollaboratorsReqVO
+    type: object
+    properties:
+      collaborators:
+        type: array
+        items:
+          type: string
+  DiscoveryReqVO:
+    title: DiscoveryReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      basicInfo:
+        type: object
+        required:
+          - pkgName
+          - port
+        properties:
+          pkgName:
+            type: string
+            pattern: '^[a-z]+[-.][a-z]+([-.][a-z]+)*$'
+          port:
+            type: integer
+            minimum: 1024
+            exclusiveMinimum: false
+            maximum: 65535
+      gitInfo:
+        type: object
+        required:
+          - gitUrl
+          - gitBranch
+        properties:
+          gitUrl:
+            type: string
+            pattern: '[a-zA-z]+://[^\s]*'
+          gitBranch:
+            type: string
+      categoryId:
+        type: string
+      devops:
+        type: boolean
+      archTypeId:
+        type: string
+    required:
+      - name
+      - basicInfo
+      - gitInfo
+      - categoryId
+      - devops
+      - archTypeId
+  MicroserviceReqVO:
+    title: MicroserviceReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+      basicInfo:
+        type: object
+        required:
+          - port
+          - contextPath
+        properties:
+          pkgName:
+            type: string
+            pattern: '^[a-z]+[-.][a-z]+([-.][a-z]+)*$'
+          port:
+            type: integer
+            minimum: 1024
+            maximum: 65535
+          contextPath:
+            type: string
+      gitInfo:
+        type: object
+        required:
+          - gitUrl
+          - gitBranch
+        properties:
+          gitUrl:
+            type: string
+            pattern: '[a-zA-z]+://[^\s]*'
+          gitBranch:
+            type: string
+      tools:
+        type: array
+        items:
+          type: string
+      devops:
+        type: boolean
+      archTypeId:
+        type: string
+    required:
+      - name
+      - type
+      - basicInfo
+      - gitInfo
+      - tools
+      - devops
+  OpenApiCallBackReqVO:
+    title: OpenApiCallBackReqVO
+    type: object
+    properties:
+      Id:
+        type: string
+      status:
+        type: string
+    required:
+      - Id
+      - status
+  UpdateMicroserviceReqVO:
+    title: UpdateMicroserviceReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      port:
+        type: integer
+      contextPath:
+        type: string
+      tools:
+        type: array
+        items:
+          type: string
+  UpdateConfigReqVO:
+    title: UpdateConfigReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      port:
+        type: integer
+        minimum: 1024
+        maximum: 65535
+  ConfigReqVO:
+    title: ConfigReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      basicInfo:
+        type: object
+        properties:
+          pkgName:
+            type: string
+            pattern: '^[a-z]+[-.][a-z]+([-.][a-z]+)*$'
+          port:
+            type: integer
+            minimum: 1024
+            maximum: 65535
+      gitInfo:
+        type: object
+        properties:
+          gitUrl:
+            type: string
+            pattern: '[a-zA-z]+://[^\s]*'
+          gitBranch:
+            type: string
+      configInfo:
+        type: object
+        properties:
+          configUrl:
+            type: string
+            pattern: '[a-zA-z]+://[^\s]*'
+          configBranch:
+            type: string
+      categoryId:
+        type: string
+      devops:
+        type: boolean
+      archTypeId:
+        type: string
+    required:
+      - name
+      - basicInfo
+      - gitInfo
+      - configInfo
+      - categoryId
+      - devops
+      - archTypeId
+  UpdateProjectReqVO:
+    title: UpdateProjectReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      profiles:
+        type: array
+        items:
+          type: string
+  CreateProjectReqVO:
+    title: CreateProjectReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      profiles:
+        type: array
+        items:
+          type: string
+      description:
+        type: string
+    required:
+      - name
+  SelectArchTypeReqVO:
+    title: SelectArchTypeReqVO
+    type: object
+    properties:
+      ArchTypeId:
+        type: string
+      projectId:
+        type: string
+    required:
+      - ArchTypeId
+      - projectId
+  UpdateGatewayReqVO:
+    title: UpdateGatewayReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      port:
+        type: integer
+        minimum: 1024
+        maximum: 65535
+  UpdateDiscoveryReqVO:
+    title: UpdateDiscoveryReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      port:
+        type: integer
+        minimum: 1024
+        maximum: 65535
+  GatewayReqVO:
+    title: GatewayReqVO
+    type: object
+    properties:
+      name:
+        type: string
+      basicInfo:
+        type: object
+        required:
+          - pkgName
+          - port
+        properties:
+          pkgName:
+            type: string
+            pattern: '^[a-z]+[-.][a-z]+([-.][a-z]+)*$'
+          port:
+            type: integer
+            minimum: 1024
+            maximum: 65535
+      gitInfo:
+        type: object
+        properties:
+          gitUrl:
+            type: string
+            pattern: '[a-zA-z]+://[^\s]*'
+          gitBranch:
+            type: string
+      categoryId:
+        type: string
+      devops:
+        type: boolean
+      archTypeId:
+        type: string
+    required:
+      - name
+      - basicInfo
+      - gitInfo
+      - categoryId
+      - devops
+      - archTypeId
+  CallBackReqVO:
+    title: CallBackReqVO
+    type: object
+    properties:
+      Id:
+        type: string
+      status:
+        type: string
+      message:
+        type: string
+      category:
+        type: string
+      kind:
+        type: string
+      archLinkStatus:
+        type: integer
+      projectId:
+        type: string
+    required:
+      - Id
+      - message
+      - category
+      - archLinkStatus
+      - projectId
